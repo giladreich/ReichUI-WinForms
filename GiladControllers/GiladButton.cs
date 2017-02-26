@@ -87,7 +87,8 @@ namespace GiladControllers
         private MemoryStream _memCursorClicked = new MemoryStream(Properties.Resources.hand_clicked);
         private Cursor _handCursor;
         private Cursor _handCursorClicked;
-        private static Thread _threadAnimator;
+        private static Thread _threadAnimatorBack;
+        private static Thread _threadAnimatorForward;
 
 
         public GiladButton()
@@ -190,10 +191,10 @@ namespace GiladControllers
             if (!_buttonEnabled)
                 return;
 
-            if (HandCursorHover && _handCursor != null)
-                this.Cursor = _handCursor;
-
             UpdateButtonImage(CustomButtonCase.Hover);
+
+            if (_handCursorHover && _handCursor != null)
+                this.Cursor = _handCursor;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -206,10 +207,11 @@ namespace GiladControllers
             if (!_buttonEnabled)
                 return;
 
-            if (HandCursorHover && _handCursor != null)
+            UpdateButtonImage(CustomButtonCase.Default);
+
+            if (_handCursorHover && _handCursor != null)
                 this.Cursor = Cursors.Default;
 
-            UpdateButtonImage(CustomButtonCase.Default);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -251,11 +253,10 @@ namespace GiladControllers
             if ((e.Button & MouseButtons.Left) == 0)
                 return;
 
+            UpdateButtonImage(CustomButtonCase.Clicked);
 
             if (HandCursorHover && _handCursor != null)
                 this.Cursor = _handCursorClicked;
-
-            UpdateButtonImage(CustomButtonCase.Clicked);
         }
 
 
@@ -272,10 +273,10 @@ namespace GiladControllers
             if ((e.Button & MouseButtons.Left) == 0)
                 return;
 
+            UpdateButtonImage(CustomButtonCase.SpecialCase);
+
             if (HandCursorHover && _handCursor != null)
                 this.Cursor = _handCursor;
-
-            UpdateButtonImage(CustomButtonCase.SpecialCase);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -390,6 +391,7 @@ namespace GiladControllers
                     }
                 }
 
+                _threadAnimatorBack.Abort();
             }
             else
             {
@@ -397,21 +399,29 @@ namespace GiladControllers
                 {
                     foreach (var btnImage in _btnForwardAnimImages)
                     {
+                        if (_reverse) // added this checks to avoid 2 threads running at the same time and updating images.
+                            _threadAnimatorForward.Abort();
+
                         this.BackgroundImage = btnImage.Value;
                         Thread.Sleep(40);
                     }
+
                 }
                 else
                 {
                     foreach (var btnImage in _btnBackAnimImages)
                     {
+                        if (_reverse)                     
+                            _threadAnimatorForward.Abort();
+
                         this.BackgroundImage = btnImage.Value;
                         Thread.Sleep(40);
                     }
                 }
+
+                _threadAnimatorForward.Abort();
             }
 
-            _threadAnimator.Abort();
         }
 
 
@@ -429,29 +439,14 @@ namespace GiladControllers
                     case CustomButtonCase.Default:
                         _reverse = true;
 
-                        if (CustomButtonDirection.Forward == _buttonDirection)
+                        try
                         {
-                            try
-                            {
-                                _threadAnimator = new Thread(new ThreadStart(AnimateButton));
-                                _threadAnimator.Start();
-                            }
-                            catch (Exception)
-                            {
-                                _threadAnimator.Abort();
-                            }
+                            _threadAnimatorBack = new Thread(new ThreadStart(AnimateButton));
+                            _threadAnimatorBack.Start();
                         }
-                        else
+                        catch (Exception)
                         {
-                            try
-                            {
-                                _threadAnimator = new Thread(new ThreadStart(AnimateButton));
-                                _threadAnimator.Start();
-                            }
-                            catch (Exception)
-                            {
-                                _threadAnimator.Abort();
-                            }
+                            _threadAnimatorBack.Abort();
                         }
                         break;
 
@@ -462,29 +457,15 @@ namespace GiladControllers
                         // If a BackgroundImage is not supporting gif, let's make it do ^_^            
                         // This seems to do the job :-)
                         _reverse = false;
-                        if (CustomButtonDirection.Forward == _buttonDirection)
+
+                        try
                         {
-                            try
-                            {
-                                _threadAnimator = new Thread(new ThreadStart(AnimateButton));
-                                _threadAnimator.Start();
-                            }
-                            catch (Exception)
-                            {
-                                _threadAnimator.Abort();
-                            }
+                            _threadAnimatorForward = new Thread(new ThreadStart(AnimateButton));
+                            _threadAnimatorForward.Start();
                         }
-                        else
+                        catch (Exception)
                         {
-                            try
-                            {
-                                _threadAnimator = new Thread(new ThreadStart(AnimateButton));
-                                _threadAnimator.Start();
-                            }
-                            catch (Exception)
-                            {
-                                _threadAnimator.Abort();
-                            }
+                            _threadAnimatorForward.Abort();
                         }
                         break;
 
