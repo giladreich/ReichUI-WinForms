@@ -195,6 +195,8 @@ namespace GiladControllers
 
             if (_handCursorHover && _handCursor != null)
                 this.Cursor = _handCursor;
+
+            base.OnMouseEnter(e);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,6 +214,7 @@ namespace GiladControllers
             if (_handCursorHover && _handCursor != null)
                 this.Cursor = Cursors.Default;
 
+            base.OnMouseLeave(e);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -227,6 +230,8 @@ namespace GiladControllers
             // added this check since i want only the left click to work.
             if ((e.Button & MouseButtons.Left) == 0)
                 return;
+
+            base.OnMouseClick(e);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -236,8 +241,16 @@ namespace GiladControllers
         ///
         protected override void OnClick(EventArgs e)
         {
+            // Casting to MouseEventArgs to be able to check if left or other keys clicked.
+            MouseEventArgs eMouse = (MouseEventArgs) e; 
+
             if (!_buttonEnabled)
                 return;
+
+            if ((eMouse.Button & MouseButtons.Left) == 0)
+                return;
+
+            base.OnClick(e);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -257,6 +270,8 @@ namespace GiladControllers
 
             if (HandCursorHover && _handCursor != null)
                 this.Cursor = _handCursorClicked;
+
+            base.OnMouseDown(e);
         }
 
 
@@ -277,6 +292,8 @@ namespace GiladControllers
 
             if (HandCursorHover && _handCursor != null)
                 this.Cursor = _handCursor;
+
+            base.OnMouseUp(e);
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
