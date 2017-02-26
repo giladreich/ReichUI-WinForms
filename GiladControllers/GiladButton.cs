@@ -171,6 +171,8 @@ namespace GiladControllers
                     return;
 
                 _buttonEnabled = value;
+                if (!_buttonEnabled)
+                    this.Cursor = Cursors.Default;
                 UpdateButtonImage(CustomButtonCase.DisabledEnabled);
                 this.Invalidate();
             }
