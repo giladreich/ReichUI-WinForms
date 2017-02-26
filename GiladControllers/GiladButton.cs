@@ -100,7 +100,7 @@ namespace GiladControllers
 
             //InitializeComponent();
             InitializeImages();
-            this.Size                  = new Size(75, 75);
+            this.Size                  = new Size(100, 100);
             this.BackgroundImage       = _btnImages[0];
             this.BackColor             = Color.Transparent;
             this.BackgroundImageLayout = ImageLayout.Stretch;
