@@ -388,7 +388,6 @@ namespace GiladControllers
             {
                 MessageBox.Show("[InitializeHandCursor] - Could not allocate custom cursor images.", "ERROR", MessageBoxButtons.OK);
             }
-
         }
 
 

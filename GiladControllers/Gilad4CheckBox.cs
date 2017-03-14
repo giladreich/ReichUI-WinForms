@@ -12,9 +12,11 @@ namespace GiladControllers
 {
     public partial class Gilad4CheckBox : UserControl
     {
-        private GiladCheckBox[] _checkBoxes;
+        private bool _handCursorHover          = false;
+
         private Color _labelForeColor          = Color.Black;
         private Color _labelForeColorDisabled  = Color.Gray;
+        private GiladCheckBox[] _checkBoxes;
 
 
         public Gilad4CheckBox()
@@ -28,6 +30,22 @@ namespace GiladControllers
         }
 
         #region ----------------------------------- Properties -----------------------------------
+        [Description("Hand Cursor will display while hovering button."), Category("~Custom Data")]
+        public bool HandCursorHover
+        {
+            get { return _handCursorHover; }
+            set
+            {
+                if (_handCursorHover == value)
+                    return;
+
+                _handCursorHover = value;
+                foreach (var checkBox in _checkBoxes)
+                    checkBox.HandCursorHover = value;
+            }
+        }
+
+
         [Description("Set/Get all the check boxes size."), Category("~Custom Data")]
         public Size CheckBoxSize
         {
@@ -145,7 +163,6 @@ namespace GiladControllers
 
             return 99999; // noone sense number.
         }
-
 
 
         #region -------------------------------------- CheckBoxes Events ---------------------------------------
