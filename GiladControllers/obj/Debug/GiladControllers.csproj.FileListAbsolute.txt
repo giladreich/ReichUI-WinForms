@@ -1,7 +1,0 @@
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\bin\Debug\GiladControllers.dll
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\bin\Debug\GiladControllers.pdb
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\obj\Debug\GiladControllers.Properties.Resources.resources
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\obj\Debug\GiladControllers.TestForm.resources
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\obj\Debug\GiladControllers.csproj.GenerateResource.Cache
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\obj\Debug\GiladControllers.dll
-c:\users\user\documents\visual studio 2015\Projects\GiladControllers\GiladControllers\obj\Debug\GiladControllers.pdb
