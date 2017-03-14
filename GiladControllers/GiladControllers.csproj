@@ -49,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gilad4CheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gilad4CheckBox.Designer.cs">
+      <DependentUpon>Gilad4CheckBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiladButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GiladButton.Designer.cs">
       <DependentUpon>GiladButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiladCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GiladCheckBox.Designer.cs">
+      <DependentUpon>GiladCheckBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +82,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Gilad4CheckBox.resx">
+      <DependentUpon>Gilad4CheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiladCheckBox.resx">
+      <DependentUpon>GiladCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -131,6 +149,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\forward_clicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_DefaultState.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_Checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_CheckedHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_ClickCheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_ClickUncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_DefaultStateHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_Disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CB_WrongAnswer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
