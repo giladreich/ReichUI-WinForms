@@ -43,9 +43,9 @@ namespace GiladControllers
         private Color _labelForeColor          = Color.Black;
         private Color _labelForeColorDisabled  = Color.Gray;
 
-        private MemoryStream _memCursor        = new MemoryStream(Properties.Resources.hand_cursor);
-        private MemoryStream _memCursorClicked = new MemoryStream(Properties.Resources.hand_clicked);
         private Dictionary<CheckBoxState, Image> _boxImages;
+        private MemoryStream _memCursor;
+        private MemoryStream _memCursorClicked;
         private Cursor _handCursor;
         private Cursor _handCursorClicked;
         #endregion --- Local Varibles ---
@@ -55,7 +55,6 @@ namespace GiladControllers
         {
             InitializeComponent();
             InitializeImages();
-            InitializeHandCursor();
         }
 
 
@@ -74,9 +73,15 @@ namespace GiladControllers
 
                 _handCursorHover = value;
                 if (_handCursorHover)
-                    UpdateCursor(CursorState.Hover);
+                    InitializeHandCursor();
                 else
-                    UpdateCursor(CursorState.Default);
+                {
+                    this.Cursor = DefaultCursor;
+                    _memCursor.Dispose();
+                    _memCursorClicked.Dispose();
+                    _handCursor.Dispose();
+                    _handCursorClicked.Dispose();
+                }
                 this.Invalidate();
             }
         }
@@ -193,6 +198,27 @@ namespace GiladControllers
         }
 
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// \brief GiladButton::InitializeHandCursor
+        /// \param 
+        /// \return 
+        ///
+        private void InitializeHandCursor()
+        {
+            try
+            {
+                _memCursor         = new MemoryStream(Properties.Resources.hand_cursor_cb);
+                _memCursorClicked  = new MemoryStream(Properties.Resources.hand_clicked_cb);
+                _handCursor        = new Cursor(_memCursor);
+                _handCursorClicked = new Cursor(_memCursorClicked);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("[InitializeHandCursor] - Could not allocate custom cursor images.", "ERROR", MessageBoxButtons.OK);
+            }
+        }
+
+
         private void UpdateCursor(CursorState cursorState)
         {
             switch (cursorState)
@@ -210,6 +236,7 @@ namespace GiladControllers
                     break;
             }
         }
+
 
         private void UpdateCheckBoxImage(CheckBoxState state)
         {
@@ -255,26 +282,6 @@ namespace GiladControllers
                     break;
             }
         }
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \brief GiladButton::InitializeHandCursor
-        /// \param 
-        /// \return 
-        ///
-        private void InitializeHandCursor()
-        {
-            try
-            {
-                _handCursor = new Cursor(_memCursor);
-                _handCursorClicked = new Cursor(_memCursorClicked);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("[InitializeHandCursor] - Could not allocate custom cursor images.", "ERROR", MessageBoxButtons.OK);
-            }
-        }
-
 
 
 

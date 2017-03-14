@@ -83,8 +83,8 @@ namespace GiladControllers
         private Dictionary<ButtonImages, Image> _btnImages;
         private Dictionary<ButtonForwardAnim, Image> _btnForwardAnimImages;
         private Dictionary<ButtonBackAnim, Image> _btnBackAnimImages;
-        private MemoryStream _memCursor        = new MemoryStream(Properties.Resources.hand_cursor);
-        private MemoryStream _memCursorClicked = new MemoryStream(Properties.Resources.hand_clicked);
+        private MemoryStream _memCursor;
+        private MemoryStream _memCursorClicked;
         private Cursor _handCursor;
         private Cursor _handCursorClicked;
         private static Thread _threadAnimatorBack;
@@ -156,7 +156,13 @@ namespace GiladControllers
                 if (_handCursorHover)
                     InitializeHandCursor();
                 else
+                {
                     this.Cursor = DefaultCursor;
+                    _memCursor.Dispose();
+                    _memCursorClicked.Dispose();
+                    _handCursor.Dispose();
+                    _handCursorClicked.Dispose();
+                }
                 this.Invalidate();
             }
         }
@@ -373,6 +379,8 @@ namespace GiladControllers
         {
             try
             {
+                _memCursor         = new MemoryStream(Properties.Resources.hand_cursor);
+                _memCursorClicked  = new MemoryStream(Properties.Resources.hand_clicked);
                 _handCursor        = new Cursor(_memCursor);
                 _handCursorClicked = new Cursor(_memCursorClicked);
             }

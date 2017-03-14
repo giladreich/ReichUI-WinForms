@@ -196,4 +196,10 @@
   <data name="CB_WrongAnswer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CB_WrongAnswer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="hand_clicked_cb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hand_clicked_cb.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="hand_cursor_cb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hand_cursor_cb.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

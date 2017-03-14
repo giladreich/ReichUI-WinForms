@@ -313,9 +313,29 @@ namespace GiladControllers.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] hand_clicked_cb {
+            get {
+                object obj = ResourceManager.GetObject("hand_clicked_cb", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] hand_cursor {
             get {
                 object obj = ResourceManager.GetObject("hand_cursor", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] hand_cursor_cb {
+            get {
+                object obj = ResourceManager.GetObject("hand_cursor_cb", resourceCulture);
                 return ((byte[])(obj));
             }
         }

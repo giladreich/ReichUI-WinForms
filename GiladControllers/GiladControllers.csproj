@@ -174,6 +174,12 @@
   <ItemGroup>
     <None Include="Resources\CB_WrongAnswer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand_clicked_cb.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hand_cursor_cb.cur" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
