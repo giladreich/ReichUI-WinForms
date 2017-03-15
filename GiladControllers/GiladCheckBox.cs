@@ -41,6 +41,7 @@ namespace GiladControllers
         private bool _checked                  = false;
         private bool _wrongAnswer              = false;
         private Color _labelForeColor          = Color.Black;
+        private Color _labelForeColorHover     = Color.White;
         private Color _labelForeColorDisabled  = Color.Gray;
 
         private Dictionary<CheckBoxState, Image> _boxImages;
@@ -82,7 +83,6 @@ namespace GiladControllers
                     _handCursor.Dispose();
                     _handCursorClicked.Dispose();
                 }
-                this.Invalidate();
             }
         }
 
@@ -96,6 +96,19 @@ namespace GiladControllers
                     return;
                 lblCheckBox.ForeColor = _labelForeColor = value;
                 this.Invalidate();
+            }
+        }
+
+        [Description("CheckBox Label color when it's being hovered."), Category("~Custom Data")]
+        public Color LabelForeColorHover
+        {
+            get { return _labelForeColorHover; }
+            set
+            {
+                if (_labelForeColorHover == value)
+                    return;
+
+                _labelForeColorHover = value;
             }
         }
 
@@ -300,6 +313,8 @@ namespace GiladControllers
             UpdateCheckBoxImage(_checked ? CheckBoxState.CheckedHover : CheckBoxState.DefaultStateHover);
             if (_handCursorHover && _handCursor != null)
                 UpdateCursor(CursorState.Hover);
+
+            lblCheckBox.ForeColor = LabelForeColorHover;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -315,6 +330,8 @@ namespace GiladControllers
             UpdateCheckBoxImage(_checked ? CheckBoxState.Checked : CheckBoxState.DefaultState);
             if (_handCursorHover && _handCursor != null)
                 UpdateCursor(CursorState.Default);
+
+            lblCheckBox.ForeColor = LabelForeColor;
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -348,7 +365,7 @@ namespace GiladControllers
             }
             else
             {
-                _checked = true;
+                _checked = true;;
                 UpdateCheckBoxImage(CheckBoxState.CheckedHover);
             }
         }

@@ -12,10 +12,6 @@ namespace GiladControllers
 {
     public partial class Gilad4CheckBox : UserControl
     {
-        private bool _handCursorHover          = false;
-
-        private Color _labelForeColor          = Color.Black;
-        private Color _labelForeColorDisabled  = Color.Gray;
         private readonly GiladCheckBox[] _checkBoxes;
 
 
@@ -35,13 +31,12 @@ namespace GiladControllers
         [Description("Hand Cursor will display while hovering button."), Category("~Custom Data")]
         public bool HandCursorHover
         {
-            get { return _handCursorHover; }
+            get { return cbOption1.HandCursorHover; }
             set
             {
-                if (_handCursorHover == value)
+                if (cbOption1.HandCursorHover == value)
                     return;
 
-                _handCursorHover = value;
                 foreach (var checkBox in _checkBoxes)
                     checkBox.HandCursorHover = value;
             }
@@ -55,6 +50,7 @@ namespace GiladControllers
             {
                 if (cbOption1.Size == value)
                     return;
+
                 foreach (var checkBox in _checkBoxes)
                     checkBox.Size = value;
                 this.Invalidate();
@@ -69,6 +65,7 @@ namespace GiladControllers
             {
                 if (cbOption1.lblCheckBox.Size == value)
                     return;
+
                 foreach (var checkBox in _checkBoxes)
                     checkBox.lblCheckBox.Size = value;
                 this.Invalidate();
@@ -83,6 +80,7 @@ namespace GiladControllers
             {
                 if (Equals(cbOption1.lblCheckBox.Font, value))
                     return;
+
                 foreach (var checkBox in _checkBoxes)
                     checkBox.lblCheckBox.Font = value;
                 this.Invalidate();
@@ -97,6 +95,7 @@ namespace GiladControllers
             {
                 if (cbOption1.lblCheckBox.AutoSize == value)
                     return;
+
                 foreach (var checkBox in _checkBoxes)
                     checkBox.lblCheckBox.AutoSize = value;
                 this.Invalidate();
@@ -106,13 +105,29 @@ namespace GiladControllers
         [Description("Sets/Gets the color of the label."), Category("~Custom Data")]
         public Color LabelForeColor
         {
-            get { return _labelForeColor; }
+            get { return cbOption1.LabelForeColor; }
             set
             {
-                if (_labelForeColor == value)
+                if (cbOption1.LabelForeColor == value)
                     return;
+
                 foreach (var checkBox in _checkBoxes)
-                    _labelForeColor = checkBox.LabelForeColor = value;
+                    checkBox.LabelForeColor = value;
+                this.Invalidate();
+            }
+        }
+
+        [Description("CheckBox Label color when it's being hovered."), Category("~Custom Data")]
+        public Color LabelForeColorHover
+        {
+            get { return cbOption1.LabelForeColorHover; }
+            set
+            {
+                if (cbOption1.LabelForeColorHover == value)
+                    return;
+
+                foreach (var checkBox in _checkBoxes)
+                    checkBox.LabelForeColorHover = value;
                 this.Invalidate();
             }
         }
@@ -120,13 +135,14 @@ namespace GiladControllers
         [Description("Sets/Gets the color of the label when it's disabled."), Category("~Custom Data")]
         public Color LabelForeColorDisabled
         {
-            get { return _labelForeColorDisabled; }
+            get { return cbOption1.LabelForeColorDisabled; }
             set
             {
-                if (_labelForeColorDisabled == value)
+                if (cbOption1.LabelForeColorDisabled == value)
                     return;
+
                 foreach (var checkBox in _checkBoxes)
-                    _labelForeColorDisabled = checkBox.LabelForeColorDisabled = value;
+                    checkBox.LabelForeColorDisabled = value;
             }
         }
 
@@ -141,6 +157,7 @@ namespace GiladControllers
             {
                 if (cbOption1.lblCheckBox.Text == value)
                     return;
+
                 cbOption1.lblCheckBox.Text = value;
                 this.Invalidate();
             }
@@ -154,6 +171,7 @@ namespace GiladControllers
             {
                 if (cbOption2.lblCheckBox.Text == value)
                     return;
+
                 cbOption2.lblCheckBox.Text = value;
                 this.Invalidate();
             }
@@ -167,6 +185,7 @@ namespace GiladControllers
             {
                 if (cbOption3.lblCheckBox.Text == value)
                     return;
+
                 cbOption3.lblCheckBox.Text = value;
                 this.Invalidate();
             }
@@ -180,6 +199,7 @@ namespace GiladControllers
             {
                 if (cbOption4.lblCheckBox.Text == value)
                     return;
+
                 cbOption4.lblCheckBox.Text = value;
                 this.Invalidate();
             }
