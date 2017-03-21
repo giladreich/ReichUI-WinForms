@@ -157,7 +157,6 @@ namespace GiladControllers
         [Description("Returns the selected CheckBox index from the 4 boxes starting from 0 to 3.")]
         public int SelectedCheckBoxIndex => GetEnabledCheckBox();
 
-
         [Description("Returns whether one of the CheckBoxes is Checked as true or false for comparison.")]
         public bool Checked
         {
@@ -242,7 +241,6 @@ namespace GiladControllers
             }
         }
 
-
         private int GetEnabledCheckBox()
         {
             for (int i = 0; i < _checkBoxes.Length; i++)
@@ -286,14 +284,21 @@ namespace GiladControllers
         /// </summary>
         private void RegisterSubEventHandlers()
         {
-            this.cbOption1.pbCheckBox.Click += new EventHandler(cbOption1_CheckedChanged);
-            this.cbOption2.pbCheckBox.Click += new EventHandler(cbOption2_CheckedChanged);
-            this.cbOption3.pbCheckBox.Click += new EventHandler(cbOption3_CheckedChanged);
-            this.cbOption4.pbCheckBox.Click += new EventHandler(cbOption4_CheckedChanged);
+            this.cbOption1.pbCheckBox.Click    += new EventHandler(cbOption1_CheckedChanged_Click);
+            this.cbOption1.pbCheckBox.KeyPress += new KeyPressEventHandler(cbOption1_CheckedChanged_KeyPress);
+
+            this.cbOption2.pbCheckBox.Click    += new EventHandler(cbOption2_CheckedChanged_Click);
+            this.cbOption2.pbCheckBox.KeyPress += new KeyPressEventHandler(cbOption2_CheckedChanged_KeyPress);
+
+            this.cbOption3.pbCheckBox.Click    += new EventHandler(cbOption3_CheckedChanged_Click);
+            this.cbOption3.pbCheckBox.KeyPress += new KeyPressEventHandler(cbOption3_CheckedChanged_KeyPress);
+
+            this.cbOption4.pbCheckBox.Click    += new EventHandler(cbOption4_CheckedChanged_Click);
+            this.cbOption4.pbCheckBox.KeyPress += new KeyPressEventHandler(cbOption4_CheckedChanged_KeyPress);
         }
 
 
-        private void cbOption1_CheckedChanged(object sender, EventArgs e)
+        private void cbOption1_CheckedChanged_Click(object sender, EventArgs e)
         {
             if (!cbOption1.CheckBoxEnabled)
                 return;
@@ -301,7 +306,7 @@ namespace GiladControllers
             ValidateCheckBox1();
         }
 
-        private void cbOption2_CheckedChanged(object sender, EventArgs e)
+        private void cbOption2_CheckedChanged_Click(object sender, EventArgs e)
         {
             if (!cbOption2.CheckBoxEnabled)
                 return;
@@ -309,7 +314,8 @@ namespace GiladControllers
             ValidateCheckBox2();
         }
 
-        private void cbOption3_CheckedChanged(object sender, EventArgs e)
+
+        private void cbOption3_CheckedChanged_Click(object sender, EventArgs e)
         {
             if (!cbOption3.CheckBoxEnabled)
                 return;
@@ -317,7 +323,41 @@ namespace GiladControllers
             ValidateCheckBox3();
         }
 
-        private void cbOption4_CheckedChanged(object sender, EventArgs e)
+        private void cbOption4_CheckedChanged_Click(object sender, EventArgs e)
+        {
+            if (!cbOption4.CheckBoxEnabled)
+                return;
+
+            ValidateCheckBox4();
+        }
+
+
+
+        private void cbOption1_CheckedChanged_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!cbOption1.CheckBoxEnabled)
+                return;
+
+            ValidateCheckBox1();
+        }
+
+        private void cbOption2_CheckedChanged_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!cbOption2.CheckBoxEnabled)
+                return;
+
+            ValidateCheckBox2();
+        }
+
+        private void cbOption3_CheckedChanged_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!cbOption3.CheckBoxEnabled)
+                return;
+
+            ValidateCheckBox3();
+        }
+
+        private void cbOption4_CheckedChanged_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!cbOption4.CheckBoxEnabled)
                 return;
