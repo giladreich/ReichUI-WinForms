@@ -158,7 +158,7 @@ namespace GiladControllers
         public int SelectedCheckBoxIndex => GetEnabledCheckBox();
 
 
-        [Description("Returns wether one of the CheckBoxes is Checked as true or false for comparison.")]
+        [Description("Returns whether one of the CheckBoxes is Checked as true or false for comparison.")]
         public bool Checked
         {
             get
@@ -298,18 +298,7 @@ namespace GiladControllers
             if (!cbOption1.CheckBoxEnabled)
                 return;
 
-            if (cbOption1.Checked)
-            {
-                cbOption2.CheckBoxEnabled = false;
-                cbOption3.CheckBoxEnabled = false;
-                cbOption4.CheckBoxEnabled = false;
-            }
-            else // when it's unchecked, enable other cb's.
-            {
-                cbOption2.CheckBoxEnabled = true;
-                cbOption3.CheckBoxEnabled = true;
-                cbOption4.CheckBoxEnabled = true;
-            }
+            ValidateCheckBox1();
         }
 
         private void cbOption2_CheckedChanged(object sender, EventArgs e)
@@ -317,18 +306,7 @@ namespace GiladControllers
             if (!cbOption2.CheckBoxEnabled)
                 return;
 
-            if (cbOption2.Checked)
-            {
-                cbOption1.CheckBoxEnabled = false;
-                cbOption3.CheckBoxEnabled = false;
-                cbOption4.CheckBoxEnabled = false;
-            }
-            else
-            {
-                cbOption1.CheckBoxEnabled = true;
-                cbOption3.CheckBoxEnabled = true;
-                cbOption4.CheckBoxEnabled = true;
-            }
+            ValidateCheckBox2();
         }
 
         private void cbOption3_CheckedChanged(object sender, EventArgs e)
@@ -336,18 +314,7 @@ namespace GiladControllers
             if (!cbOption3.CheckBoxEnabled)
                 return;
 
-            if (cbOption3.Checked)
-            {
-                cbOption1.CheckBoxEnabled = false;
-                cbOption2.CheckBoxEnabled = false;
-                cbOption4.CheckBoxEnabled = false;
-            }
-            else
-            {
-                cbOption1.CheckBoxEnabled = true;
-                cbOption2.CheckBoxEnabled = true;
-                cbOption4.CheckBoxEnabled = true;
-            }
+            ValidateCheckBox3();
         }
 
         private void cbOption4_CheckedChanged(object sender, EventArgs e)
@@ -355,18 +322,7 @@ namespace GiladControllers
             if (!cbOption4.CheckBoxEnabled)
                 return;
 
-            if (cbOption4.Checked)
-            {
-                cbOption1.CheckBoxEnabled = false;
-                cbOption2.CheckBoxEnabled = false;
-                cbOption3.CheckBoxEnabled = false;
-            }
-            else
-            {
-                cbOption1.CheckBoxEnabled = true;
-                cbOption2.CheckBoxEnabled = true;
-                cbOption3.CheckBoxEnabled = true;
-            }
+            ValidateCheckBox4();
         }
         #endregion -------------------------------------- CheckBoxes Events ---------------------------------------
 
