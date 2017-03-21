@@ -10,6 +10,14 @@ using System.Windows.Forms;
 
 namespace GiladControllers
 {
+    public enum CbIndex
+    {
+        First  = 0,
+        Second = 1,
+        Third  = 2,
+        Fourth = 3
+    }
+
     public partial class Gilad4CheckBox : UserControl
     {
         private readonly GiladCheckBox[] _checkBoxes;
@@ -149,6 +157,20 @@ namespace GiladControllers
         [Description("Returns the selected CheckBox index from the 4 boxes starting from 0 to 3.")]
         public int SelectedCheckBoxIndex => GetEnabledCheckBox();
 
+
+        [Description("Returns wether one of the CheckBoxes is Checked as true or false for comparison.")]
+        public bool Checked
+        {
+            get
+            {
+                foreach (var checkBox in _checkBoxes)
+                    if (checkBox.Checked)
+                        return true;
+
+                return false;
+            }
+        }
+
         [Description("Set/Get CheckBox 1 Text."), Category("~Custom Data")]
         public string CheckBox1Text
         {
@@ -230,6 +252,32 @@ namespace GiladControllers
             return 99999; // noone sense number.
         }
 
+        /// <summary>
+        /// Lets you select/deselect one of the CheckBoxes with a enum indexer.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="flag"></param>
+        public void SelectCheckBox(CbIndex index, bool flag)
+        {
+            _checkBoxes[(int)index].Checked = flag;
+
+            switch ((int)index)
+            {
+                case 0:
+                    ValidateCheckBox1();
+                    break;
+                case 1:
+                    ValidateCheckBox2();
+                    break;
+                case 2:
+                    ValidateCheckBox3();
+                    break;
+                case 3:
+                    ValidateCheckBox4();
+                    break;
+            }
+
+        }
 
         #region -------------------------------------- CheckBoxes Events ---------------------------------------
         /// <summary>
@@ -321,6 +369,71 @@ namespace GiladControllers
             }
         }
         #endregion -------------------------------------- CheckBoxes Events ---------------------------------------
+
+
+        private void ValidateCheckBox1()
+        {
+            if (cbOption1.Checked)
+            {
+                cbOption2.CheckBoxEnabled = false;
+                cbOption3.CheckBoxEnabled = false;
+                cbOption4.CheckBoxEnabled = false;
+            }
+            else // when it's unchecked, enable other cb's.
+            {
+                cbOption2.CheckBoxEnabled = true;
+                cbOption3.CheckBoxEnabled = true;
+                cbOption4.CheckBoxEnabled = true;
+            }
+        }
+
+        private void ValidateCheckBox2()
+        {
+            if (cbOption2.Checked)
+            {
+                cbOption1.CheckBoxEnabled = false;
+                cbOption3.CheckBoxEnabled = false;
+                cbOption4.CheckBoxEnabled = false;
+            }
+            else
+            {
+                cbOption1.CheckBoxEnabled = true;
+                cbOption3.CheckBoxEnabled = true;
+                cbOption4.CheckBoxEnabled = true;
+            }
+        }
+
+        private void ValidateCheckBox3()
+        {
+            if (cbOption3.Checked)
+            {
+                cbOption1.CheckBoxEnabled = false;
+                cbOption2.CheckBoxEnabled = false;
+                cbOption4.CheckBoxEnabled = false;
+            }
+            else
+            {
+                cbOption1.CheckBoxEnabled = true;
+                cbOption2.CheckBoxEnabled = true;
+                cbOption4.CheckBoxEnabled = true;
+            }
+        }
+
+        private void ValidateCheckBox4()
+        {
+            if (cbOption4.Checked)
+            {
+                cbOption1.CheckBoxEnabled = false;
+                cbOption2.CheckBoxEnabled = false;
+                cbOption3.CheckBoxEnabled = false;
+            }
+            else
+            {
+                cbOption1.CheckBoxEnabled = true;
+                cbOption2.CheckBoxEnabled = true;
+                cbOption3.CheckBoxEnabled = true;
+            }
+        }
 
     }
 }
