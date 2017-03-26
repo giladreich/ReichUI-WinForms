@@ -35,8 +35,34 @@ namespace GiladControllers
         }
 
 
-        #region ----------------------------------- Properties -----------------------------------
-        [Description("Hand Cursor will display while hovering button."), Category("~Custom Data")]
+
+
+
+        #region --- Custom Properties Controls ---
+
+        [Description("You can register and unregister all events. " +
+                     "By setting Inactive, all events would be unregistered " +
+                     "and Active will register them back."), Category("~Custom Data")]
+        public ControlViewMode ViewModeState
+        {
+            get { return cbOption1.ViewModeState; }
+            set
+            {
+                if (cbOption1.ViewModeState == value)
+                    return;
+
+                foreach (var checkBox in _checkBoxes)
+                    checkBox.ViewModeState = value;
+
+                if (cbOption1.ViewModeState == ControlViewMode.Active)
+                    RegisterSubEventHandlers();
+                else
+                    UnregisterSubEventHandlers();
+            }
+        }
+
+
+        [Description("Hand Cursor will display while hovering."), Category("~Custom Data")]
         public bool HandCursorHover
         {
             get { return cbOption1.HandCursorHover; }
@@ -95,7 +121,8 @@ namespace GiladControllers
             }
         }
 
-        [Description("Set/Get AutSize of the labels. It's particle when text is too long so it jumps a row down."), Category("~Custom Data")]
+        [Description("Set/Get AutSize of the labels. It's particle when text is too " +
+                     "long so it jumps a row down."), Category("~Custom Data")]
         public bool CheckBoxAutoSize
         {
             get { return cbOption1.lblCheckBox.AutoSize; }
@@ -154,10 +181,10 @@ namespace GiladControllers
             }
         }
 
-        [Description("Returns the selected CheckBox index from the 4 boxes starting from 0 to 3.")]
+        [Description("Returns the selected CheckBox index from the 4 boxes starting from 0 to 3."), Category("~Custom Data")]
         public int SelectedCheckBoxIndex => GetEnabledCheckBox();
 
-        [Description("Returns whether one of the CheckBoxes is Checked as true or false for comparison.")]
+        [Description("Returns whether one of the CheckBoxes is Checked as true or false for comparison."), Category("~Custom Data")]
         public bool Checked
         {
             get
@@ -226,7 +253,9 @@ namespace GiladControllers
             }
         }
 
-        #endregion ----------------------------------- Properties -----------------------------------
+        #endregion --- Custom Properties Controls ---
+
+
 
 
         /// <summary>
@@ -295,6 +324,20 @@ namespace GiladControllers
 
             this.cbOption4.pbCheckBox.Click    += new EventHandler(cbOption4_CheckedChanged_Click);
             this.cbOption4.pbCheckBox.KeyPress += new KeyPressEventHandler(cbOption4_CheckedChanged_KeyPress);
+        }
+        private void UnregisterSubEventHandlers()
+        {
+            this.cbOption1.pbCheckBox.Click    -= new EventHandler(cbOption1_CheckedChanged_Click);
+            this.cbOption1.pbCheckBox.KeyPress -= new KeyPressEventHandler(cbOption1_CheckedChanged_KeyPress);
+                                               
+            this.cbOption2.pbCheckBox.Click    -= new EventHandler(cbOption2_CheckedChanged_Click);
+            this.cbOption2.pbCheckBox.KeyPress -= new KeyPressEventHandler(cbOption2_CheckedChanged_KeyPress);
+                                               
+            this.cbOption3.pbCheckBox.Click    -= new EventHandler(cbOption3_CheckedChanged_Click);
+            this.cbOption3.pbCheckBox.KeyPress -= new KeyPressEventHandler(cbOption3_CheckedChanged_KeyPress);
+                                               
+            this.cbOption4.pbCheckBox.Click    -= new EventHandler(cbOption4_CheckedChanged_Click);
+            this.cbOption4.pbCheckBox.KeyPress -= new KeyPressEventHandler(cbOption4_CheckedChanged_KeyPress);
         }
 
 

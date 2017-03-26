@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GiladControllers")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Gilad Controllers")]
+[assembly: AssemblyDescription("WindowsFrom Custom C# Controllers")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GiladControllers")]
+[assembly: AssemblyProduct("Gilad Controllers")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

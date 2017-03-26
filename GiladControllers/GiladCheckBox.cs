@@ -30,6 +30,12 @@ namespace GiladControllers
         Hover,
         Click
     }
+
+    public enum ControlViewMode
+    {
+        Active,
+        Inactive
+    }
     #endregion --- Some Enums ---
 
 
@@ -43,6 +49,7 @@ namespace GiladControllers
         private Color _labelForeColor          = Color.Black;
         private Color _labelForeColorHover     = Color.White;
         private Color _labelForeColorDisabled  = Color.Gray;
+        private ControlViewMode _viewMode      = ControlViewMode.Active;
 
         private Dictionary<CheckBoxState, Image> _boxImages;
         private MemoryStream _memCursor;
@@ -63,6 +70,42 @@ namespace GiladControllers
 
 
         #region --- Custom Properties Controls ---
+        [Description("You can register and unregister all events. " +
+                     "By setting Inactive, all events would be unregistered " +
+                     "and Active will register them back."), Category("~Custom Data")]
+        public ControlViewMode ViewModeState
+        {
+            get { return _viewMode; }
+            set
+            {
+                if (_viewMode == value)
+                    return;
+
+                _viewMode = value;
+
+                if (_viewMode == ControlViewMode.Active)
+                {
+                    // Register the events
+                    this.pbCheckBox.MouseEnter += pbCheckBox_MouseEnter;
+                    this.pbCheckBox.MouseLeave += pbCheckBox_MouseLeave;
+                    this.pbCheckBox.MouseClick += pbCheckBox_MouseClick;
+                    this.pbCheckBox.Click      += pbCheckBox_Click;
+                    this.pbCheckBox.MouseDown  += pbCheckBox_MouseDown;
+                    this.pbCheckBox.MouseUp    += pbCheckBox_MouseUp;
+                }
+                else
+                {
+                    // Unregister the events
+                    this.pbCheckBox.MouseEnter -= pbCheckBox_MouseEnter;
+                    this.pbCheckBox.MouseLeave -= pbCheckBox_MouseLeave;
+                    this.pbCheckBox.MouseClick -= pbCheckBox_MouseClick;
+                    this.pbCheckBox.Click      -= pbCheckBox_Click;
+                    this.pbCheckBox.MouseDown  -= pbCheckBox_MouseDown;
+                    this.pbCheckBox.MouseUp    -= pbCheckBox_MouseUp;
+                }
+            }
+        }
+
         [Description("Hand Cursor will display while hovering."), Category("~Custom Data")]
         public bool HandCursorHover
         {
