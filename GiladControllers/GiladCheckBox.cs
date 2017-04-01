@@ -21,7 +21,8 @@ namespace GiladControllers
         CheckedHover,
         ClickCheck,
         ClickUncheck,
-        WrongAnswer
+        WrongAnswer,
+        WrongSelected
     }
 
     public enum CursorState
@@ -46,6 +47,7 @@ namespace GiladControllers
         private bool _handCursorHover          = false;
         private bool _checked                  = false;
         private bool _wrongAnswer              = false;
+        private bool _wrongSelected            = false;
         private Color _labelForeColor          = Color.Black;
         private Color _labelForeColorHover     = Color.White;
         private Color _labelForeColorDisabled  = Color.Gray;
@@ -229,6 +231,28 @@ namespace GiladControllers
                 this.Invalidate();
             }
         }
+
+        [Description("When user wants to review his exam, this can be used to show what he selected " +
+                     "and that is wrong answer."), Category("~Custom Data")]
+        public bool WrongSelected
+        {
+            get { return _wrongSelected; }
+            set
+            {
+                _wrongSelected = value;
+                if (_wrongSelected)
+                {
+                    _checkBoxEnabled = false;
+                    UpdateCheckBoxImage(CheckBoxState.WrongSelected);
+                }
+                else
+                {
+                    _checkBoxEnabled = true;
+                    UpdateCheckBoxImage(CheckBoxState.DefaultState);
+                }
+                this.Invalidate();
+            }
+        }
         #endregion --- Custom Properties Controls ---
 
 
@@ -246,7 +270,8 @@ namespace GiladControllers
                 {CheckBoxState.CheckedHover     , Properties.Resources.CB_CheckedHover},
                 {CheckBoxState.ClickCheck       , Properties.Resources.CB_ClickCheck},
                 {CheckBoxState.ClickUncheck     , Properties.Resources.CB_ClickUncheck},
-                {CheckBoxState.WrongAnswer      , Properties.Resources.CB_WrongAnswer}
+                {CheckBoxState.WrongAnswer      , Properties.Resources.CB_WrongAnswer},
+                {CheckBoxState.WrongSelected    , Properties.Resources.CB_WrongSelected}
             };
         }
 
@@ -327,6 +352,10 @@ namespace GiladControllers
 
                 case CheckBoxState.WrongAnswer:
                     pbCheckBox.Image = _boxImages[CheckBoxState.WrongAnswer];
+                    break;
+
+                case CheckBoxState.WrongSelected:
+                    pbCheckBox.Image = _boxImages[CheckBoxState.WrongSelected];
                     break;
 
                 default:
