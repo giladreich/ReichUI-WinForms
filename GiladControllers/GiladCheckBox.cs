@@ -215,9 +215,6 @@ namespace GiladControllers
             get { return _wrongAnswer; }
             set
             {
-                if (_wrongAnswer == value)
-                    return;
-
                 _wrongAnswer = value;
                 if (_wrongAnswer)
                 {

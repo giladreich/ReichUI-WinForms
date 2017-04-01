@@ -23,20 +23,23 @@ namespace GiladControllers
         private readonly GiladCheckBox[] _checkBoxes;
 
 
+        private void AddSubProperties()
+        {
+            // doesn't work in the designer file unfortunately it removes automatically.
+            for (int i = 0; i < _checkBoxes.Length; i++)
+                _checkBoxes[i].pbCheckBox.Tag = i.ToString();
+        }
+
         public Gilad4CheckBox()
         {
             InitializeComponent();
-            RegisterSubEventHandlers();
-
             _checkBoxes       = new GiladCheckBox[4]{ cbOption1, cbOption2, cbOption3, cbOption4 };
+            RegisterSubEventHandlers();
+            AddSubProperties();
             CheckBoxAutoSize  = false;
             CheckBoxSize      = new Size(435, 55);
             CheckBoxLabelSize = new Size(400, 40);
         }
-
-
-
-
 
         #region --- Custom Properties Controls ---
 
