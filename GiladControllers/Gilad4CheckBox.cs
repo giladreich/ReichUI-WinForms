@@ -309,6 +309,35 @@ namespace GiladControllers
 
         }
 
+
+        /// <summary>
+        /// Lets you select a check box with an index.
+        /// </summary>
+        public int SelectCheckBoxIndex {
+            set
+            {
+                if (value < 0 || value > 3)
+                    throw new ArgumentOutOfRangeException();
+
+                _checkBoxes[value].Checked = true;
+                switch (value)
+                {
+                    case 0:
+                        ValidateCheckBox1();
+                        break;
+                    case 1:
+                        ValidateCheckBox2();
+                        break;
+                    case 2:
+                        ValidateCheckBox3();
+                        break;
+                    case 3:
+                        ValidateCheckBox4();
+                        break;
+                }
+            }
+        }
+
         #region -------------------------------------- CheckBoxes Events ---------------------------------------
         /// <summary>
         /// When registering this in the desinger file, the c# designer will run into problems at some point.
