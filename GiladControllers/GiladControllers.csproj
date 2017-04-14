@@ -73,6 +73,12 @@
     <Compile Include="GiladCheckBox.Designer.cs">
       <DependentUpon>GiladCheckBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiladGradientPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GiladGradientPanel.Designer.cs">
+      <DependentUpon>GiladGradientPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
