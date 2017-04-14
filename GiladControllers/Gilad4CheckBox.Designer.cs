@@ -71,6 +71,7 @@
             this.cbOption4.TabIndex = 0;
             this.cbOption4.ViewModeState = GiladControllers.ControlViewMode.Active;
             this.cbOption4.WrongAnswer = false;
+            this.cbOption4.WrongSelected = false;
             // 
             // cbOption2
             // 
@@ -88,6 +89,7 @@
             this.cbOption2.TabIndex = 0;
             this.cbOption2.ViewModeState = GiladControllers.ControlViewMode.Active;
             this.cbOption2.WrongAnswer = false;
+            this.cbOption2.WrongSelected = false;
             // 
             // cbOption3
             // 
@@ -105,6 +107,7 @@
             this.cbOption3.TabIndex = 0;
             this.cbOption3.ViewModeState = GiladControllers.ControlViewMode.Active;
             this.cbOption3.WrongAnswer = false;
+            this.cbOption3.WrongSelected = false;
             // 
             // cbOption1
             // 
@@ -122,6 +125,7 @@
             this.cbOption1.TabIndex = 0;
             this.cbOption1.ViewModeState = GiladControllers.ControlViewMode.Active;
             this.cbOption1.WrongAnswer = false;
+            this.cbOption1.WrongSelected = false;
             // 
             // Gilad4CheckBox
             // 

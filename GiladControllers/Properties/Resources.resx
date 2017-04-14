@@ -118,32 +118,41 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="back_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="forward_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forward_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CB_Checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_Checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hand_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hand_clicked.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="forward_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hand_cursor_cb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hand_cursor_cb.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="back_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CB_DefaultStateHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_DefaultStateHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CB_ClickUncheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_ClickUncheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CB_DefaultState" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_DefaultState.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CB_CheckedHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_CheckedHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,58 +160,73 @@
   <data name="hand_cursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hand_cursor.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="back_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="forward_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_DefaultState" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_DefaultState.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_Checked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_Checked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_CheckedHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_CheckedHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_ClickCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_ClickCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_ClickUncheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_ClickUncheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_DefaultStateHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_DefaultStateHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_Disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_Disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CB_WrongAnswer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CB_WrongAnswer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="back_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hand_clicked_cb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hand_clicked_cb.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="hand_cursor_cb" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hand_cursor_cb.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="forward_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CB_ClickCheck" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_ClickCheck.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CB_Disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_Disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CB_WrongSelected" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\cb_wrongselected.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward_clicked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_clicked.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CB_WrongAnswer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CB_WrongAnswer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="maximize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\maximize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="maximize_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\maximize_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimize_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimize_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resize_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resize_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

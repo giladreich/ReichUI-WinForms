@@ -34,10 +34,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GiladControllers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>obj\Debug\GiladControllers.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -58,6 +54,12 @@
     </Compile>
     <Compile Include="Gilad4CheckBox.Designer.cs">
       <DependentUpon>Gilad4CheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GiladBorderLayout.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GiladBorderLayout.Designer.cs">
+      <DependentUpon>GiladBorderLayout.cs</DependentUpon>
     </Compile>
     <Compile Include="GiladButton.cs">
       <SubType>Component</SubType>
@@ -86,9 +88,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Gilad4CheckBox.resx">
-      <DependentUpon>Gilad4CheckBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GiladCheckBox.resx">
       <DependentUpon>GiladCheckBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,10 +184,31 @@
     <None Include="Resources\hand_cursor_cb.cur" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CB_WrongSelectedAnswer.png" />
+    <None Include="Resources\CB_WrongSelected.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CB_WrongSelected.png" />
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximize_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimize_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize_hover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
