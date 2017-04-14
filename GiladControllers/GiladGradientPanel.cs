@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GiladControllers
 {
-    public partial class GiladGradientPanel : UserControl
+    public partial class GiladGradientPanel : Panel
     {
         private Color _color1 = Color.White;
         private Color _color2 = Color.Black;
