@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -75,7 +76,7 @@ namespace GiladControllers
         private CustomButtonDirection _buttonDirection = CustomButtonDirection.Forward;
         private bool _buttonEnabled                    = true;
         private bool _animateHover                     = false;
-        private bool _handCursorHover                  = false;
+        private bool _handCursor                       = false;
         private bool _reverse                          = false; // flag for the animated button.
 
 
@@ -83,10 +84,8 @@ namespace GiladControllers
         private Dictionary<ButtonImages, Image> _btnImages;
         private Dictionary<ButtonForwardAnim, Image> _btnForwardAnimImages;
         private Dictionary<ButtonBackAnim, Image> _btnBackAnimImages;
-        private MemoryStream _memCursor;
-        private MemoryStream _memCursorClicked;
-        private Cursor _handCursor;
-        private Cursor _handCursorClicked;
+        private Cursor _handCursorImg;
+        private Cursor _handCursorClickedImg;
         private static Thread _threadAnimatorBack;
         private static Thread _threadAnimatorForward;
 
@@ -105,6 +104,20 @@ namespace GiladControllers
             this.BackgroundImage       = _btnImages[0];
             this.BackColor             = Color.Transparent;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            foreach (Control control in Controls) // reflection to sort flickering.
+            {
+                typeof(Control).InvokeMember("DoubleBuffered",
+                    BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                    null, control, new object[] { true });
+            }
+            using (var gp = new GraphicsPath())
+            {
+                gp.AddEllipse(new Rectangle(-1, -1, this.Width, this.Height)); // rounding the region of the control.
+
+                this.Region = new Region(gp);
+            }
+
+            InitCursor();
         }
 
 
@@ -123,7 +136,7 @@ namespace GiladControllers
 
                 _buttonDirection = value;
                 UpdateButtonImage(CustomButtonCase.DisabledEnabled);
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -134,36 +147,27 @@ namespace GiladControllers
             get { return _animateHover; }
             set
             {
-                if (_animateHover == value)
-                    return;
-
                 _animateHover = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
 
         [Description("Hand Cursor will display while hovering button."), Category("~GiladButton Custom Data")]
-        public bool HandCursorHover
+        public bool HandCursor
         {
-            get { return _handCursorHover; }
+            get { return _handCursor; }
             set
             {
-                if (_handCursorHover == value)
-                    return;
-
-                _handCursorHover = value;
-                if (_handCursorHover)
-                    InitializeHandCursor();
+                _handCursor = value;
+                if (_handCursor)
+                    InitCursor();
                 else
                 {
-                    this.Cursor = DefaultCursor;
-                    _memCursor.Dispose();
-                    _memCursorClicked.Dispose();
-                    _handCursor.Dispose();
-                    _handCursorClicked.Dispose();
+                    _handCursorImg.Dispose();
+                    _handCursorClickedImg.Dispose();
                 }
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -173,14 +177,9 @@ namespace GiladControllers
             get { return _buttonEnabled; }
             set
             {
-                if (_buttonEnabled == value)
-                    return;
-
                 _buttonEnabled = value;
-                if (!_buttonEnabled)
-                    this.Cursor = Cursors.Default;
                 UpdateButtonImage(CustomButtonCase.DisabledEnabled);
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
         #endregion --------------------------------------- Custom Properties Controls ---------------------------------------
@@ -198,12 +197,10 @@ namespace GiladControllers
         {
             if (!_buttonEnabled)
                 return;
-
             UpdateButtonImage(CustomButtonCase.Hover);
 
-            if (_handCursorHover && _handCursor != null)
-                this.Cursor = _handCursor;
-
+            if (_handCursor && _handCursorImg != null)
+                this.Cursor = _handCursorImg;
             base.OnMouseEnter(e);
         }
 
@@ -219,7 +216,7 @@ namespace GiladControllers
 
             UpdateButtonImage(CustomButtonCase.Default);
 
-            if (_handCursorHover && _handCursor != null)
+            if (_handCursor && _handCursorImg != null)
                 this.Cursor = Cursors.Default;
 
             base.OnMouseLeave(e);
@@ -268,16 +265,13 @@ namespace GiladControllers
         ///
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (!_buttonEnabled)
-                return;
-
-            if ((e.Button & MouseButtons.Left) == 0)
+            if (!_buttonEnabled || (e.Button & MouseButtons.Left) == 0)
                 return;
 
             UpdateButtonImage(CustomButtonCase.Clicked);
 
-            if (HandCursorHover && _handCursor != null)
-                this.Cursor = _handCursorClicked;
+            if (HandCursor && _handCursorImg != null)
+                this.Cursor = _handCursorClickedImg;
 
             base.OnMouseDown(e);
         }
@@ -290,16 +284,13 @@ namespace GiladControllers
         ///
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (!_buttonEnabled)
-                return;
-
-            if ((e.Button & MouseButtons.Left) == 0)
+            if (!_buttonEnabled || (e.Button & MouseButtons.Left) == 0)
                 return;
 
             UpdateButtonImage(CustomButtonCase.SpecialCase);
 
-            if (HandCursorHover && _handCursor != null)
-                this.Cursor = _handCursor;
+            if (HandCursor && _handCursorImg != null)
+                this.Cursor = _handCursorImg;
 
             base.OnMouseUp(e);
         }
@@ -309,17 +300,17 @@ namespace GiladControllers
         /// \param 
         /// \return 
         ///
-        protected override void OnPaint(PaintEventArgs pe)
-        {
-            using (var gp = new GraphicsPath())
-            {
-                gp.AddEllipse(new Rectangle(-1, -1, this.Width, this.Height)); // rounding the region of the control.
+        //protected override void OnPaint(PaintEventArgs pe)
+        //{
+        //    using (var gp = new GraphicsPath())
+        //    {
+        //        gp.AddEllipse(new Rectangle(-1, -1, this.Width, this.Height)); // rounding the region of the control.
 
-                this.Region = new Region(gp);
-            }
+        //        this.Region = new Region(gp);
+        //    }
 
-            base.OnPaint(pe);
-        }
+        //    base.OnPaint(pe);
+        //}
 
 
         #endregion ------------------------------ Overriding Parents Class Events ------------------------------ 
@@ -371,22 +362,20 @@ namespace GiladControllers
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /// \brief GiladButton::InitializeHandCursor
+        /// \brief GiladButton::InitCursor
         /// \param 
         /// \return 
         ///
-        private void InitializeHandCursor()
+        private void InitCursor()
         {
             try
             {
-                _memCursor         = new MemoryStream(Properties.Resources.hand_cursor);
-                _memCursorClicked  = new MemoryStream(Properties.Resources.hand_clicked);
-                _handCursor        = new Cursor(_memCursor);
-                _handCursorClicked = new Cursor(_memCursorClicked);
+                _handCursorImg        = new Cursor(new MemoryStream(Properties.Resources.hand_cursor));
+                _handCursorClickedImg = new Cursor(new MemoryStream(Properties.Resources.hand_clicked));
             }
             catch (Exception)
             {
-                MessageBox.Show("[InitializeHandCursor] - Could not allocate custom cursor images.", "ERROR", MessageBoxButtons.OK);
+                MessageBox.Show("[InitCursor] - Could not allocate custom cursor images.", "ERROR", MessageBoxButtons.OK);
             }
         }
 

@@ -49,17 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gilad4CheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Gilad4CheckBox.Designer.cs">
       <DependentUpon>Gilad4CheckBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="GiladBorderLayout.cs">
+    <Compile Include="GiladTitleBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GiladBorderLayout.Designer.cs">
-      <DependentUpon>GiladBorderLayout.cs</DependentUpon>
+    <Compile Include="GiladTitleBar.Designer.cs">
+      <DependentUpon>GiladTitleBar.cs</DependentUpon>
     </Compile>
     <Compile Include="GiladButton.cs">
       <SubType>Component</SubType>
@@ -73,12 +85,30 @@
     <Compile Include="GiladCheckBox.Designer.cs">
       <DependentUpon>GiladCheckBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiladControlBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GiladControlBox.Designer.cs">
+      <DependentUpon>GiladControlBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="GiladGradientPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="GiladGradientPanel.Designer.cs">
       <DependentUpon>GiladGradientPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiladForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helpers\LoadCursor.cs" />
+    <Compile Include="Helpers\Properties\Events\Delegates.cs" />
+    <Compile Include="Helpers\Properties\Events\RefreshDesignerValues.cs" />
+    <Compile Include="Helpers\Properties\Events\ValueChanged.cs" />
+    <Compile Include="Helpers\Properties\GiladForm\AppTitle.cs" />
+    <Compile Include="Helpers\Properties\GiladForm\FormBackColor.cs" />
+    <Compile Include="Helpers\Properties\GiladForm\FormBorders.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Helpers\Utilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -86,26 +116,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gilad4CheckBox.resx">
+      <DependentUpon>Gilad4CheckBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GiladCheckBox.resx">
       <DependentUpon>GiladCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GiladControlBox.resx">
+      <DependentUpon>GiladControlBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cur_form_drag.ani" />
+    <None Include="Resources\cur_form_normal.ani" />
     <None Include="Resources\forward_disabled.png" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +247,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\resize_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

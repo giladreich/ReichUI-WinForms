@@ -1,6 +1,6 @@
 ﻿namespace GiladControllers
 {
-    partial class GiladBorderLayout
+    partial class GiladTitleBar
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GiladBorderLayout));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GiladTitleBar));
             this.pbMin = new System.Windows.Forms.PictureBox();
             this.pbMax = new System.Windows.Forms.PictureBox();
             this.tableLayout = new System.Windows.Forms.TableLayoutPanel();

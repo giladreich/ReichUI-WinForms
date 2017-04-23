@@ -1,6 +1,6 @@
-﻿namespace GiladControllers
+﻿namespace GiladControllers.Forms
 {
-    partial class TestForm
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // TestForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(739, 346);
-            this.Name = "TestForm";
-            this.Text = "TestForm";
-            this.ResumeLayout(false);
-
+            this.Text = "Form2";
         }
 
         #endregion

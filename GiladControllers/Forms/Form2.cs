@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GiladControllers
+namespace GiladControllers.Forms
 {
-    public partial class TestForm : Form
+    public partial class Form2 : Form
     {
-        public TestForm()
+        public Form2()
         {
             InitializeComponent();
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GiladControllers.Forms;
 
 namespace GiladControllers
 {
@@ -16,7 +17,7 @@ namespace GiladControllers
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestForm());
+            Application.Run(new Form1());
         }
     }
 }

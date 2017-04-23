@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace GiladControllers
@@ -22,7 +23,7 @@ namespace GiladControllers
     }
 
 
-    public partial class GiladBorderLayout : UserControl
+    public partial class GiladTitleBar : UserControl
     {
         Point dragOffset;
         private Dictionary<ButtonState, Image> _images;
@@ -32,7 +33,7 @@ namespace GiladControllers
 
 
 
-        public GiladBorderLayout()
+        public GiladTitleBar()
         {
             InitializeComponent();
             InitializeImages();
@@ -57,7 +58,7 @@ namespace GiladControllers
                 if (_color1 == value)
                     return;
                 _color1 = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -71,7 +72,7 @@ namespace GiladControllers
                 if (_color2 == value)
                     return;
                 _color2 = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
         
@@ -85,7 +86,7 @@ namespace GiladControllers
                 if (_gradientMode == value)
                     return;
                 _gradientMode = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -99,7 +100,7 @@ namespace GiladControllers
                 if (lblAppTitle.Text == value)
                     return;
                 lblAppTitle.Text = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -113,27 +114,54 @@ namespace GiladControllers
 
         private void background_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                dragOffset = this.PointToScreen(e.Location);
-                var formLocation = FindForm().Location;
-                dragOffset.X -= formLocation.X;
-                dragOffset.Y -= formLocation.Y;
-            }
+            if (e.Button != MouseButtons.Left || ParentForm == null) return;
+
+            dragOffset = this.PointToScreen(e.Location);
+            var formLocation = ParentForm.Location;
+            dragOffset.X -= formLocation.X;
+            dragOffset.Y -= formLocation.Y;
         }
 
 
         private void background_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                Point newLocation = this.PointToScreen(e.Location);
+            if (e.Button != MouseButtons.Left || ParentForm == null) return;
 
-                newLocation.X -= dragOffset.X;
-                newLocation.Y -= dragOffset.Y;
-                FindForm().Location = newLocation;
-            }
+            var newLocation = this.PointToScreen(e.Location);
+            newLocation.X -= dragOffset.X;
+            newLocation.Y -= dragOffset.Y;
+            ParentForm.Location = newLocation;
         }
+
+
+        //private Point dragOffset;
+        //protected override void OnMouseDown(MouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Left && ParentForm != null)
+        //    {
+        //        dragOffset = this.PointToScreen(e.Location);
+        //        var formLocation = FindForm().Location;
+        //        dragOffset.X -= formLocation.X;
+        //        dragOffset.Y -= formLocation.Y;
+        //    }
+
+        //    base.OnMouseDown(e);
+        //}
+
+
+        //protected override void OnMouseMove(MouseEventArgs e)
+        //{
+        //    if (e.Button == MouseButtons.Left && ParentForm != null)
+        //    {
+        //        Point newLocation = this.PointToScreen(e.Location);
+
+        //        newLocation.X -= dragOffset.X;
+        //        newLocation.Y -= dragOffset.Y;
+        //        ParentForm.Location = newLocation;
+        //    }
+
+        //    base.OnMouseMove(e);
+        //}
 
 
         private void pbExit_MouseEnter(object sender, EventArgs e)
@@ -244,9 +272,22 @@ namespace GiladControllers
         }
         protected override void OnScroll(ScrollEventArgs se)
         {
-            this.Invalidate();
+            if(DesignMode) this.Invalidate();
             base.OnScroll(se);
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            foreach (Control control in Controls) // reflection to sort flickering.
+            {
+                typeof(Control).InvokeMember("DoubleBuffered",
+                    BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                    null, control, new object[] { true });
+            }
+        }
+
         #endregion --- Overriding Control Events -----------------------------------------------------------------------------------------
 
 

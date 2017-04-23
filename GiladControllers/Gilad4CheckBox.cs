@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,6 +40,13 @@ namespace GiladControllers
             CheckBoxAutoSize  = false;
             CheckBoxSize      = new Size(435, 55);
             CheckBoxLabelSize = new Size(400, 40);
+
+
+            this.SetStyle(
+                ControlStyles.UserPaint |
+                ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.SupportsTransparentBackColor, true);
         }
 
         #region --- Custom Properties Controls ---
@@ -90,7 +98,7 @@ namespace GiladControllers
 
                 foreach (var checkBox in _checkBoxes)
                     checkBox.Size = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -105,7 +113,7 @@ namespace GiladControllers
 
                 foreach (var checkBox in _checkBoxes)
                     checkBox.lblCheckBox.Size = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -120,7 +128,7 @@ namespace GiladControllers
 
                 foreach (var checkBox in _checkBoxes)
                     checkBox.lblCheckBox.Font = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -136,7 +144,7 @@ namespace GiladControllers
 
                 foreach (var checkBox in _checkBoxes)
                     checkBox.lblCheckBox.AutoSize = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -151,7 +159,7 @@ namespace GiladControllers
 
                 foreach (var checkBox in _checkBoxes)
                     checkBox.LabelForeColor = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -166,7 +174,7 @@ namespace GiladControllers
 
                 foreach (var checkBox in _checkBoxes)
                     checkBox.LabelForeColorHover = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -210,7 +218,7 @@ namespace GiladControllers
                     return;
 
                 cbOption1.lblCheckBox.Text = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -224,7 +232,7 @@ namespace GiladControllers
                     return;
 
                 cbOption2.lblCheckBox.Text = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -238,7 +246,7 @@ namespace GiladControllers
                     return;
 
                 cbOption3.lblCheckBox.Text = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -252,7 +260,7 @@ namespace GiladControllers
                     return;
 
                 cbOption4.lblCheckBox.Text = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -339,6 +347,22 @@ namespace GiladControllers
         }
 
         #region -------------------------------------- CheckBoxes Events ---------------------------------------
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            foreach (Control control in Controls) // reflection to sort flickering.
+            {
+                typeof(Control).InvokeMember("DoubleBuffered",
+                    BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                    null, control, new object[] { true });
+            }
+        }
+        
+        
+        
+        
         /// <summary>
         /// When registering this in the desinger file, the c# designer will run into problems at some point.
         /// This is why we do it seperatly for the sub components.

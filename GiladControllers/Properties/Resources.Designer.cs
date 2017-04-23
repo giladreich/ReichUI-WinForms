@@ -61,6 +61,16 @@ namespace GiladControllers.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon app_icon {
+            get {
+                object obj = ResourceManager.GetObject("app_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap back {
@@ -227,6 +237,26 @@ namespace GiladControllers.Properties {
             get {
                 object obj = ResourceManager.GetObject("CB_WrongSelected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cur_form_drag {
+            get {
+                object obj = ResourceManager.GetObject("cur_form_drag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cur_form_normal {
+            get {
+                object obj = ResourceManager.GetObject("cur_form_normal", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

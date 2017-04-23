@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -140,7 +141,7 @@ namespace GiladControllers
                 if (_labelForeColor == value)
                     return;
                 lblCheckBox.ForeColor = _labelForeColor = value;
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -189,7 +190,7 @@ namespace GiladControllers
                     lblCheckBox.ForeColor = _labelForeColorDisabled;
                     UpdateCheckBoxImage(CheckBoxState.Disabled);
                 }
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -207,7 +208,7 @@ namespace GiladControllers
                     UpdateCheckBoxImage(CheckBoxState.Checked);
                 else
                     UpdateCheckBoxImage(CheckBoxState.DefaultState);
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -228,7 +229,7 @@ namespace GiladControllers
                     _checkBoxEnabled = true;
                     UpdateCheckBoxImage(CheckBoxState.DefaultState);
                 }
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
 
@@ -250,7 +251,7 @@ namespace GiladControllers
                     _checkBoxEnabled = true;
                     UpdateCheckBoxImage(CheckBoxState.DefaultState);
                 }
-                this.Invalidate();
+                if(DesignMode) this.Invalidate();
             }
         }
         #endregion --- Custom Properties Controls ---
@@ -369,6 +370,23 @@ namespace GiladControllers
 
 
         #region Event Handlers
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            foreach (Control control in Controls) // reflection to sort flickering.
+            {
+                typeof(Control).InvokeMember("DoubleBuffered",
+                    BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                    null, control, new object[] { true });
+            }
+        }
+
+
+
+
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// \brief UserControl::OnMouseEnter
         /// \param 

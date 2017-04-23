@@ -38,6 +38,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.cbOption4, 0, 3);
@@ -57,6 +58,7 @@
             // 
             // cbOption4
             // 
+            this.cbOption4.BackColor = System.Drawing.Color.Transparent;
             this.cbOption4.CheckBoxEnabled = true;
             this.cbOption4.Checked = false;
             this.cbOption4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -75,6 +77,7 @@
             // 
             // cbOption2
             // 
+            this.cbOption2.BackColor = System.Drawing.Color.Transparent;
             this.cbOption2.CheckBoxEnabled = true;
             this.cbOption2.Checked = false;
             this.cbOption2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -93,6 +96,7 @@
             // 
             // cbOption3
             // 
+            this.cbOption3.BackColor = System.Drawing.Color.Transparent;
             this.cbOption3.CheckBoxEnabled = true;
             this.cbOption3.Checked = false;
             this.cbOption3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,6 +115,7 @@
             // 
             // cbOption1
             // 
+            this.cbOption1.BackColor = System.Drawing.Color.Transparent;
             this.cbOption1.CheckBoxEnabled = true;
             this.cbOption1.Checked = false;
             this.cbOption1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -131,6 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(230, 150);
             this.Name = "Gilad4CheckBox";
