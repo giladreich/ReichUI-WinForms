@@ -278,6 +278,7 @@ namespace GiladControllers
             {
                 if (base.Text == value) return;
                 base.Text = value;
+                if (DesignMode) this.Invalidate();
             }
         }
 
