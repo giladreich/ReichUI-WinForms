@@ -101,15 +101,15 @@ namespace GiladControllers
 
             if (AppTitle.ShowTextTitle && AppTitle.ShowIcon)
             {
-                e.Graphics.DrawString(AppTitle.Text, AppTitle.TextFont, new SolidBrush(Color.Black),
+                e.Graphics.DrawString(this.Text, AppTitle.TextFont, new SolidBrush(Color.Black),
                     new Point(AppTitle.TextLocation.X, AppTitle.TextLocation.Y - 2)); // shadow.
-                e.Graphics.DrawString(AppTitle.Text, AppTitle.TextFont, AppTitle.Brush, AppTitle.TextLocation);
+                e.Graphics.DrawString(this.Text, AppTitle.TextFont, AppTitle.Brush, AppTitle.TextLocation);
             }
             else
             {
-                e.Graphics.DrawString(AppTitle.Text, AppTitle.TextFont, new SolidBrush(Color.Black),
+                e.Graphics.DrawString(this.Text, AppTitle.TextFont, new SolidBrush(Color.Black),
                     new Point(AppTitle.TextLocation.X, AppTitle.TextLocation.Y - 2)); // shadow.
-                e.Graphics.DrawString(AppTitle.Text, AppTitle.TextFont, AppTitle.Brush, AppTitle.TextLocation);
+                e.Graphics.DrawString(this.Text, AppTitle.TextFont, AppTitle.Brush, AppTitle.TextLocation);
             }
         }
 
@@ -264,6 +264,20 @@ namespace GiladControllers
                     myCursorNormal?.Dispose();
                     myCursorDrag?.Dispose();
                 }
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        /// 
+        [Category("~Custom Data")]
+        [Description("Application title color for the text.")]
+        public override string Text
+        {
+            get { return AppTitle.ShowTextTitle ? base.Text : ""; }
+            set
+            {
+                if (base.Text == value) return;
+                base.Text = value;
             }
         }
 

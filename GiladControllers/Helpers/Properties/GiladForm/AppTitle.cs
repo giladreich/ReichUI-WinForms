@@ -30,7 +30,6 @@ namespace GiladControllers.Helpers.Properties.GiladForm
         private Point _iconLocation = new Point(10, 10);
         private bool _showIcon = true;
         private bool _showTextTitle = true;
-        private string _text = "Application Title";
         private SolidBrush _brush = new SolidBrush(Color.Red); // depend on TextColor property.
         private Font _font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
         private Point _textLocation = new Point(50, 15);
@@ -99,17 +98,7 @@ namespace GiladControllers.Helpers.Properties.GiladForm
             }
         }
 
-        [Description("Application title color for the text.")]
-        public string Text
-        {
-            get { return ShowTextTitle ? _text : ""; }
-            set
-            {
-                if (_text == value) return;
-                _text = value;
-                OnValueChanged(nameof(Text));
-            }
-        }
+
 
         [Browsable(false)]
         public SolidBrush Brush => _brush;
