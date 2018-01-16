@@ -1,2 +1,7 @@
-GiladControllers/obj/
-GiladControllers/bin/Debug/GiladControllers.pdb
+.env*
+*.suo
+*.ide
+*.user
+.vs
+obj
+bin
